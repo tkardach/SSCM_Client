@@ -1,0 +1,34 @@
+.authentication-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: auto;
+}
+
+.authentication-image {
+  margin: 30px auto;
+  width: 60%;
+  padding-bottom: 60%;
+  border-radius: 50%;
+
+  background-image: url("https://res.saratogaswimclub.com/images/SwimClub10mm.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.authentication-form {
+  margin-top: 50px;
+  width: 60%;
+}
+
+.authentication-footer {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.form-group p {
+  color : rgb(247, 44, 44);
+}

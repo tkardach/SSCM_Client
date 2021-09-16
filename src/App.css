@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.App-Mobile {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top:0;
+  bottom: 0;
 }
 
 .App-logo {
@@ -26,6 +37,20 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.sscm-primary {
+  background-color: #00AFF3;
+  color: white;
+}
+
+.sscm-secondary {
+  background-color: #FF9300;
+  color: white;
+}
+
+.authentication-window {
+  margin: auto;
 }
 
 @keyframes App-logo-spin {
