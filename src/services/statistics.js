@@ -53,10 +53,8 @@ function getFilterKey(date, filter) {
   }
 }
 
-export async function getMemberSigninsByFilter(memberId, filter, start=MIN_DATE, end=MAX_DATE) {
+export async function getMemberSigninsByFilter(filter, memberId=null, start=MIN_DATE, end=MAX_DATE) {
   const results = await getSignins();
-
-  console.log(results);
 
   // Group by filter values
   const filtered = {};
@@ -67,16 +65,17 @@ export async function getMemberSigninsByFilter(memberId, filter, start=MIN_DATE,
     if (ts < start || ts > end) continue;
 
     const key = getFilterKey(ts, filter);
+    
     if (!memberFiltered[key])
       memberFiltered[key] = 0;
     if (!filtered[key])
       filtered[key] =0;
 
-    if (signin.id === memberId)
+    if (memberId && signin.id === memberId)
       memberFiltered[key]++;
     else
       filtered[key]++;
   }
 
-  return {memberFiltered, filtered};
+  return { memberFiltered, filtered };
 }

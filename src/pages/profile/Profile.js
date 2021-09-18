@@ -1,6 +1,6 @@
 import './Profile.css';
 import React from 'react';
-import ColumnChart from '../../components/charts/ColumnChart';
+import PoolUsageChart from '../../components/pool-usage/PoolUsageChart';
 
 
 const Profile = () => {
@@ -12,7 +12,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <ColumnChart chartStyle={chartStyle}/>
+      <PoolUsageChart chartStyle={chartStyle}/>
     </div>
   );
 };
