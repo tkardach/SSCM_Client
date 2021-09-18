@@ -1,34 +1,46 @@
-import './Authentication.css';
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { login } from '../../services/authentication';
+import "./Authentication.css";
+import React from "react";
+import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { login } from "../../services/authentication";
 
 
 const Login = ({setToken, gotoCreateAccountPage, gotoForgotPasswordPage}) => {
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+  gotoForgotPasswordPage = gotoForgotPasswordPage && typeof gotoForgotPasswordPage === "function" ? gotoForgotPasswordPage : () => {};
+  gotoCreateAccountPage = gotoCreateAccountPage && typeof gotoCreateAccountPage === "function" ? gotoCreateAccountPage : () => {};
 
-  gotoForgotPasswordPage = gotoForgotPasswordPage && typeof gotoForgotPasswordPage === 'function' ? gotoForgotPasswordPage : () => {};
-  gotoCreateAccountPage = gotoCreateAccountPage && typeof gotoCreateAccountPage === 'function' ? gotoCreateAccountPage : () => {};
-
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const { register, handleSubmit, getValues, formState: { errors } } = useForm();
+  
+  const onSubmit = async data => {
     const token = await login({
-      username,
-      password
+      email: data.email,
+      password: data.password
     });
+
     setToken(token);
   }
 
   return (
     <div className="authentication-container">
       <div className="authentication-image"/>
-      <form className="authentication-form text-center" onSubmit={handleSubmit}>
+      <form className="authentication-form text-center" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="Email" onChange={e => setUserName(e.target.value)}/>
+          <input 
+            name="email"
+            type="email"
+            className="form-control" 
+            placeholder="Email" 
+            {...register("email", {required: true})}/>
+          {errors.email && <p>Email is required</p>}
         </div>
         <div className="form-group">
-          <input type="password" className="form-control" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+          <input 
+            name="password"
+            type="password"
+            className="form-control" 
+            placeholder="Password" 
+            {...register("password", {required: true})} />
+          {errors.password && <p>Password is required</p>}
         </div>
         <div className="text-right">
           <div className="font-weight-light d-inline-block text-left">

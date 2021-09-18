@@ -2,6 +2,7 @@
   "name": "swim-club-members",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {},
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
@@ -10,7 +11,9 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "chart.js": "^3.5.1",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.5",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.15.3",
     "react-responsive": "^9.0.0-beta.4",

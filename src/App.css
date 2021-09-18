@@ -1,8 +1,10 @@
 .App {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top:0;
+  bottom: 0;
   text-align: center;
-  margin-top: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .App-Mobile {
@@ -49,9 +51,6 @@
   color: white;
 }
 
-.authentication-window {
-  margin: auto;
-}
 
 @keyframes App-logo-spin {
   from {

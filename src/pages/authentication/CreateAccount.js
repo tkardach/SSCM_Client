@@ -1,12 +1,12 @@
-import './Authentication.css';
-import React from 'react';
-import PropTypes from 'prop-types';
+import "./Authentication.css";
+import React from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { createAccount } from '../../services/authentication';
+import { createAccount } from "../../services/authentication";
 
 
 const CreateAccount = ({setToken, gotoLoginPage}) => {
-  gotoLoginPage = gotoLoginPage && typeof gotoLoginPage === 'function' ? gotoLoginPage : () => {};
+  gotoLoginPage = gotoLoginPage && typeof gotoLoginPage === "function" ? gotoLoginPage : () => {};
 
   const { register, handleSubmit, getValues, formState: { errors } } = useForm();
   
@@ -52,7 +52,7 @@ const CreateAccount = ({setToken, gotoLoginPage}) => {
                 passwordMatch: value => value === getValues().password
               }
             })}/>
-          {errors.passwordCopy?.type === 'passwordMatch' && <p>Passwords do not match</p>}
+          {errors.passwordCopy?.type === "passwordMatch" && <p>Passwords do not match</p>}
         </div>
         <div className="text-right">
           <div className="font-weight-light d-inline-block text-left">

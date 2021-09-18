@@ -1,10 +1,18 @@
 import './Profile.css';
 import React from 'react';
+import ColumnChart from '../../components/charts/ColumnChart';
 
 
 const Profile = () => {
+  const chartStyle = {
+    width: "80%",
+    height: "60vh",
+    margin: "auto"
+  }
+
   return (
-    <div id="profile-container">
+    <div className="profile-container">
+      <ColumnChart chartStyle={chartStyle}/>
     </div>
   );
 };
