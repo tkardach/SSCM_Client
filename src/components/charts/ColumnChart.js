@@ -5,7 +5,7 @@ const ColumnChart = (props) => {
   const options = {
     plugins: {
       legend: {
-        position: 'right',
+        position: 'top'
       },
       title: {
         display: true,
@@ -19,7 +19,7 @@ const ColumnChart = (props) => {
         title: {
           display: true,
           text: props.xAxisLabel
-        },
+        }
       },
       y: {
         stacked: true,
@@ -32,9 +32,7 @@ const ColumnChart = (props) => {
   };
 
   return (
-  <div>
-    <Bar data={props.data} options={options} />
-  </div>
+    <Bar height="100%" width="100%" data={props.data} options={options} />
   );
 }
 

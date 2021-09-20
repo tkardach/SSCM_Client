@@ -1,5 +1,1 @@
-import { useMediaQuery } from 'react-responsive';
-
-export const isMobile = () => {
-  return useMediaQuery({ query: `(max-width: 850px)`});
-}
+export const isMobileQuery = `(max-width: 850px)`;

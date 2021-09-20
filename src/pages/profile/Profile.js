@@ -7,7 +7,8 @@ const Profile = () => {
   const chartStyle = {
     width: "80%",
     height: "60vh",
-    margin: "auto"
+    margin: "auto",
+    marginTop: "20%"
   }
 
   return (
