@@ -7,7 +7,7 @@
 }
 
 .authentication-image {
-  margin: 30px auto;
+  margin: auto;
   width: 60%;
   padding-bottom: 60%;
   border-radius: 50%;
@@ -16,11 +16,10 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-
 }
 
 .authentication-form {
-  margin-top: 50px;
+  margin-top: 3em;
   width: 60%;
 }
 

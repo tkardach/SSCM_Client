@@ -1,7 +1,7 @@
 import "./PoolUsageChart.css";
 import React, { useEffect, useState } from "react";
 import { Filter, getMemberSigninsByFilter } from "../../services/statistics";
-import ColumnChart from "../charts/ColumnChart";
+import ColumnChart from '../../components/charts/ColumnChart';
 
 const PoolUsageChart = (props) => {
   const [items, setItems] = useState([]);

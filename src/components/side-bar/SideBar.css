@@ -1,0 +1,31 @@
+.sidebar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.toggle-collapse {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  cursor: pointer;
+  color: gray;
+  width: 40px;
+}
+
+.sidebar-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.hide {
+  overflow: hidden;
+}

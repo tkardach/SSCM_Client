@@ -5,14 +5,7 @@
   top:0;
   bottom: 0;
   text-align: center;
-}
-
-.App-Mobile {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top:0;
-  bottom: 0;
+  background-color: white;
 }
 
 .App-logo {
@@ -51,6 +44,41 @@
   color: white;
 }
 
+.account-navigation {
+  background-color: white;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  transition: width 0.5s;
+  overflow-y: auto;
+}
+
+.app-sidebar-content {
+  width: 100vw;
+}
+
+.account-navigation-hidden {
+  background-color: transparent;
+  width: 70px!important;
+}
+
+.app-sidebar-hide-content {
+  display: none;
+}
+
+.profile-navigation {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: 0.5s;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -58,5 +86,25 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 850px) {
+  .profile-navigation {
+    left: 400px;
+  }
+  
+  .profile-navigation-expanded {
+    left: 70px;
+  }
+
+  .app-sidebar-content {
+    width: 400px;
+  }
+
+  .account-navigation {
+    background-color: white;
+    width: 400px;
+    box-shadow: 5px 0px 5px #888888;
   }
 }

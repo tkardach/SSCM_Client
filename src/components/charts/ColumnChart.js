@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2';
 
 const ColumnChart = (props) => {
   const options = {
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top'
@@ -31,8 +32,16 @@ const ColumnChart = (props) => {
     }
   };
 
+  const columnChartStyle = {
+    position: "relative",
+    left: "0",
+    right: "0",
+    top: "0",
+    bottom: "0"
+  }
+
   return (
-    <Bar height="100%" width="100%" data={props.data} options={options} />
+    <Bar style={columnChartStyle} data={props.data} options={options} />
   );
 }
 
