@@ -2,7 +2,10 @@
   "name": "swim-club-members",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {},
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  },
+  "proxy": "http://localhost:7777",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
@@ -25,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mock-api": "node src/test/generateMockAPI.js && json-server --watch src/test/mock_api.json --routes src/test/mock_api_routes.json --port 7777"
   },
   "eslintConfig": {
     "extends": [

@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Authentication from './pages/authentication/Authentication';
 import Profile from './pages/authentication/Profile';
 import PoolUsageChart from './pages/pool-usage/PoolUsageChart';
-import { useToken } from './services/token';
+import { getToken } from './services/token';
 import { useMediaQuery } from 'react-responsive';
 import { isMobileQuery } from './services/device';
 import Sidebar from './components/side-bar/SideBar';
 
 
 function App() {
-  const {token, setToken, removeToken} = useToken();
+  const [token, setToken] = useState();
   const [hideSidebar, setHideSidebar] = useState(false);
 
-  localStorage.setItem('token', null);
+  // this makes sure the API is called only once to check if logged in
+  useEffect(() => {
+    async function fetchData() {
+      setToken(await getToken());
+    }
+
+    fetchData();
+  }, []);
 
   const isMobile = useMediaQuery({query: isMobileQuery});
 
   const onToggleHide = (hidden) => {
     setHideSidebar(hidden);
+  }
+
+  const removeToken = () => {
+    setToken('');
   }
 
   const chartStyle = {
@@ -50,7 +61,7 @@ function App() {
           </Sidebar>
         </div>
         <div className={"profile-navigation " + (hideSidebar ? "profile-navigation-expanded" : "")}>
-          <PoolUsageChart chartStyle={chartStyle}/>
+          <PoolUsageChart chartStyle={chartStyle} memberId={token ? token.member_id : ''} />
         </div>
       </div>
     </div>

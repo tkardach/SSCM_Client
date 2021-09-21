@@ -4,22 +4,18 @@ import { Filter, getMemberSigninsByFilter } from "../../services/statistics";
 import ColumnChart from '../../components/charts/ColumnChart';
 
 const PoolUsageChart = (props) => {
-  const [items, setItems] = useState([]);
-  const [labels, setLabels] = useState([])
+  const [data, setData] = useState({labels: [], items: []});
 
   // Get pool usage data from API
   useEffect(() => {
-    getMemberSigninsByFilter(Filter.MONTH)
+    getMemberSigninsByFilter(Filter.MONTH, props.memberId)
     .then((data) => {
-      // Get labels from total pool usage
-      setLabels(Object.keys(data.filtered));
-
       // Get member data
-      let memberDataset = Object.values(data.filtered);
+      let memberDataset = Object.values(data.memberFiltered);
       const datasets = [];
 
       // If member data exists, add another set of data
-      if (memberDataset.length === 0) {
+      if (data.memberTotal !== 0) {
         datasets.push({
           label: "Your Usage",
           data: memberDataset,
@@ -33,15 +29,14 @@ const PoolUsageChart = (props) => {
         data: Object.values(data.filtered),
         backgroundColor: "#00AFF3"
       });
-
-      setItems(datasets);
+      
+      setData({
+        labels: Object.keys(data.filtered),
+        datasets: datasets,
+      });
     });
-  }, [])
+  }, [props.memberId])
 
-  const data = {
-    labels: labels,
-    datasets: items,
-  };
 
   return (
     <div style={props.chartStyle}>

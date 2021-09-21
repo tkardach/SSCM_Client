@@ -1,5 +1,5 @@
 import "./Authentication.css";
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { createAccount } from "../../services/authentication";
@@ -9,14 +9,27 @@ const CreateAccount = ({setToken, gotoLoginPage}) => {
   gotoLoginPage = gotoLoginPage && typeof gotoLoginPage === "function" ? gotoLoginPage : () => {};
 
   const { register, handleSubmit, getValues, formState: { errors } } = useForm();
+  const [serverError, setServerError] = useState();
   
   const onSubmit = async data => {
     const token = await createAccount({
       email: data.email,
       password: data.password
-    });
-
-    setToken(token);
+    })
+    .then(async data => {
+      if (data.status === 201) {
+        setServerError('');
+        return data.json();
+      }
+      
+      // Received a server error, handle accordingly
+      setServerError(await data.text());
+      return undefined
+    })
+    .catch(err => console.log(err));
+    
+    if (token)
+      setToken(token);
   }
 
   return (
@@ -53,6 +66,7 @@ const CreateAccount = ({setToken, gotoLoginPage}) => {
               }
             })}/>
           {errors.passwordCopy?.type === "passwordMatch" && <p>Passwords do not match</p>}
+          {serverError && <p>{serverError}</p>}
         </div>
         <div className="text-right">
           <div className="font-weight-light d-inline-block text-left">

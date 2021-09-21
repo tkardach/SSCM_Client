@@ -12,31 +12,10 @@ const monthFormat = new Intl.DateTimeFormat("en-US", { month: "long", year: "2-d
 const yearFormat = new Intl.DateTimeFormat("en-US", { year: "numeric" }).format;
 
 async function getSignins() {
-  return fetch(process.env.REACT_APP_SSCM_STATISTICS_API + '/signins')
+  return fetch(
+    process.env.REACT_APP_SSCM_STATISTICS_API + '/signins')
     .then(async data => await data.json())
     .catch(err => console.log(err));
-}
-
-async function getMemberSignIns(id) {
-  const results = await getSignins();
-
-  return results.filter(signin => {
-    return signin.id === id;
-  });
-}
-
-async function getMemberAndTotalSignins(id) {
-  const results = await getSignins();
-
-  const member = results.filter(signin => {
-    return signin.id === id;
-  });
-
-  const remaining = results.filter(signin => {
-    return signin.id !== id;
-  });
-
-  return {member, remaining}
 }
 
 function getFilterKey(date, filter) {
@@ -55,27 +34,32 @@ function getFilterKey(date, filter) {
 
 export async function getMemberSigninsByFilter(filter, memberId=null, start=MIN_DATE, end=MAX_DATE) {
   const results = await getSignins();
-
+  
   // Group by filter values
   const filtered = {};
   const memberFiltered = {};
+  let memberTotal = 0;
+  let total = 0;
 
   for (let signin of results) {
     const ts = new Date(signin.ts);
     if (ts < start || ts > end) continue;
 
     const key = getFilterKey(ts, filter);
-    
+
     if (!memberFiltered[key])
       memberFiltered[key] = 0;
     if (!filtered[key])
       filtered[key] =0;
 
-    if (memberId && signin.id === memberId)
+    if (memberId && signin.id === memberId) {
+      memberTotal++;
       memberFiltered[key]++;
-    else
+    } else {
+      total++;
       filtered[key]++;
+    }
   }
 
-  return { memberFiltered, filtered };
+  return { memberFiltered, filtered, memberTotal, total };
 }
