@@ -3,6 +3,7 @@ import './App.css';
 import Authentication from './pages/authentication/Authentication';
 import Profile from './pages/authentication/Profile';
 import PoolUsageChart from './pages/pool-usage/PoolUsageChart';
+import MemberDues from './pages/member-dues/MemberDues';
 import { getToken } from './services/token';
 import { useMediaQuery } from 'react-responsive';
 import { isMobileQuery } from './services/device';
@@ -34,8 +35,8 @@ function App() {
 
   const chartStyle = {
     width: "auto",
-    height: "40%",
-    margin: "20% 15%"
+    height: "50%",
+    margin: "10% 15%"
   }
 
   return (
@@ -61,7 +62,8 @@ function App() {
           </Sidebar>
         </div>
         <div className={"profile-navigation " + (hideSidebar ? "profile-navigation-expanded" : "")}>
-          <PoolUsageChart chartStyle={chartStyle} memberId={token ? token.member_id : ''} />
+          <MemberDues memberId={token?.member_id} />
+          <PoolUsageChart chartStyle={chartStyle} memberId={token?.member_id} />
         </div>
       </div>
     </div>

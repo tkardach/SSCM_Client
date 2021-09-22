@@ -37,7 +37,6 @@ const PoolUsageChart = (props) => {
     });
   }, [props.memberId])
 
-
   return (
     <div style={props.chartStyle}>
       <ColumnChart 

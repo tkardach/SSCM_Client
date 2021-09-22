@@ -43,6 +43,27 @@
   background-color: #FF9300;
   color: white;
 }
+.btn-sscm-primary {
+  font-size: 1em;
+  background-color: #00AFF3;
+  color: white;
+}
+.btn-sscm-primary:hover {
+  background-color: #00a3e4;
+  color: #c5c5c5;
+}
+
+.btn-sscm-secondary {
+  font-size: 1em;
+  background-color: #FF9300;
+  color: white;
+}
+.btn-sscm-secondary:hover {
+  background-color: #e98800;
+  color: #c5c5c5;
+}
+
+
 
 .account-navigation {
   background-color: white;
@@ -78,6 +99,29 @@
   bottom: 0;
   right: 0;
   transition: 0.5s;
+}
+
+/* Tooltip text */
+.app-tooltip-text {
+  cursor: default;
+  visibility: hidden;
+  left: 10%;
+  right: 10%;
+  top: 20%;
+  background-color: rgba(236, 236, 236, 0.801);
+  color: rgb(80, 80, 80);
+  font-size: 0.35em;
+  text-align: center;
+  border-radius: 6px;
+  margin: 0;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.app-tooltip:hover .app-tooltip-text {
+  visibility: visible;
 }
 
 @keyframes App-logo-spin {

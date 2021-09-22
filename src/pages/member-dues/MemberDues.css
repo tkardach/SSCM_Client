@@ -1,0 +1,28 @@
+.member-dues-container {
+  margin-top: 10%;
+}
+
+.member-dues-fees {
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+  font-size: 4em;
+  font-weight: 300;
+  font-style: italic;
+  color: #60c7f0;
+}
+
+.member-dues-fees p {
+  font-size: 0.75em;
+  margin: 0;
+  font-style: normal;
+}
+
+.member-dues-buttons {
+  margin-top: 15px;
+}
+
+.member-dues-button {
+  width: 75px;
+  margin: 0 5px;
+  padding: .2rem .5rem;
+}

@@ -12,10 +12,7 @@ const monthFormat = new Intl.DateTimeFormat("en-US", { month: "long", year: "2-d
 const yearFormat = new Intl.DateTimeFormat("en-US", { year: "numeric" }).format;
 
 async function getSignins() {
-  return fetch(
-    process.env.REACT_APP_SSCM_STATISTICS_API + '/signins')
-    .then(async data => await data.json())
-    .catch(err => console.log(err));
+  return fetch(process.env.REACT_APP_SSCM_STATISTICS_API + '/signins');
 }
 
 function getFilterKey(date, filter) {
@@ -33,13 +30,27 @@ function getFilterKey(date, filter) {
 }
 
 export async function getMemberSigninsByFilter(filter, memberId=null, start=MIN_DATE, end=MAX_DATE) {
-  const results = await getSignins();
-  
+  const results = await getSignins()
+    .then(async data => {
+      if (data.status === 200)
+        return await data.json();
+      return null;
+    })
+    .catch(err => {
+      console.log(err);
+      return null;
+    });
+
+
   // Group by filter values
   const filtered = {};
   const memberFiltered = {};
   let memberTotal = 0;
   let total = 0;
+
+  
+  if (!results)  
+    return { memberFiltered, filtered, memberTotal, total };
 
   for (let signin of results) {
     const ts = new Date(signin.ts);
