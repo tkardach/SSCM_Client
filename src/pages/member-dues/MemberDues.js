@@ -40,7 +40,7 @@ const MemberDues = (props) => {
     <div className="member-dues-container">
       <div className="member-dues-fees">
         <p>Dues</p>
-        <NumberFormat value={calculateDues(account?.dues)} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+        <p><NumberFormat value={calculateDues(account?.dues)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></p>
       </div>
       <div className="member-dues-buttons">
         <button className="btn btn-sscm-secondary member-dues-button">View</button>
