@@ -34,6 +34,14 @@
   color: #61dafb;
 }
 
+h1, h2, h3 {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+  color: rgb(110, 110, 110);
+  font-size: 2em;
+  font-weight: 300;
+  padding: 5px;
+}
+
 .sscm-primary {
   background-color: #00AFF3;
   color: white;

@@ -27,6 +27,20 @@
   padding: .2rem .5rem;
 }
 
+.member-payment-methods-modal {
+  padding: 5%;
+}
+
+.member-payment-amount-text {
+  text-align: center;
+  padding-right: 10px;
+  margin: 0 !important;
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #60c7f0;
+}
 
 @media (min-width: 850px) {
   .member-dues-buttons {
