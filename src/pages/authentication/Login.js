@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { login } from "../../services/authentication";
+import Input from "@material-ui/core/Input";
 
 
 const Login = ({setToken, gotoCreateAccountPage, gotoForgotPasswordPage}) => {
@@ -38,16 +39,17 @@ const Login = ({setToken, gotoCreateAccountPage, gotoForgotPasswordPage}) => {
       <div className="authentication-image"/>
       <form className="authentication-form text-center" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <input 
+          <Input 
             name="email"
             type="email"
             className="form-control" 
-            placeholder="Email" 
+            placeholder="Email"
             {...register("email", {required: true})}/>
           {errors.email && <p>Email is required</p>}
         </div>
         <div className="form-group">
-          <input 
+          <span className="input-group-addon"><i className="fa fa-key fa-fw"></i></span>
+          <Input 
             name="password"
             type="password"
             className="form-control" 

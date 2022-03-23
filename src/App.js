@@ -62,7 +62,9 @@ function App() {
           </Sidebar>
         </div>
         <div className={"profile-navigation " + (hideSidebar ? "profile-navigation-expanded" : "")}>
-          <MemberDues memberId={token?.member_id} />
+          {token && 
+            <MemberDues memberId={token?.member_id} />
+          }
           <PoolUsageChart chartStyle={chartStyle} memberId={token?.member_id} />
         </div>
       </div>

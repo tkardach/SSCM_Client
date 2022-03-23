@@ -24,6 +24,17 @@ export function logout() {
   return fetch(process.env.REACT_APP_SSCM_AUTHENTICATE_API + '/logout');
 } 
 
+export function forgotPassword(email) {
+  const content = {email: email}
+  return fetch(process.env.REACT_APP_SSCM_AUTHENTICATE_API + '/forgot', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(content)
+  })
+}
+
 export function getJWT() {
   return fetch(process.env.REACT_APP_SSCM_AUTHENTICATE_API + '/jwt')
 } 
